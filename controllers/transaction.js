@@ -1,6 +1,6 @@
-exports.createTransaction = (req, res, next) => {
-  return res.send({
-    transaction: req.params.transaction_id,
-    user: req.params.user_id
+exports.createTransaction = function (req, res, next) {
+  global.db.transactions.createNewTransaction(req.params)
+  .then( function createTransactionResponse (response) { 
+    return res.send(response)
   })
 }
