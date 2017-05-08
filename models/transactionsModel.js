@@ -8,7 +8,7 @@ module.exports = function transactionsModel (sequelize, DataTypes) {
       autoIncrement: true
     },
     title: DataTypes.TEXT,
-    amount: DataTypes.INTEGER,
+    amount: DataTypes.DECIMAL(10,2),
     user_id: DataTypes.INTEGER,
     created: DataTypes.DATE,
     updated: DataTypes.DATE,
