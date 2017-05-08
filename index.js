@@ -19,6 +19,10 @@ server.post('/transactions', function createTransactionRequest (req, res, next) 
   transactionCtrl.createTransaction(req, res, next)
 })
 
+server.put('/transactions/:transaction_id', function updateTransactionRequest (req, res, next) {
+  transactionCtrl.updateTransaction(req, res, next)
+})
+
 server.get('/transactions/:user_id', function getTransactionsRequest (req, res, next) {
   transactionCtrl.getUserTransactions(req, res, next)
 })

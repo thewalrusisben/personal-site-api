@@ -18,19 +18,36 @@ module.exports = function transactionsModel (sequelize, DataTypes) {
     updatedAt: 'updated'
   })
 
-  Transactions.createNewTransaction = function createNewTransaction (transaction) {
+  Transactions.createNewTransaction = function createNewTransactionInModel (transaction) {
     return this.create(transaction)
     .then(function createTransactionModelResponse (transaction) {
       return transaction.dataValues
     })
+    .catch(function (err) {
+      console.log(err)
+    })
   }
 
-  Transactions.getUserTransactions = function getUserTransactions (userId) {
+  Transactions.updateTransaction = function updateTransactionInModel (transaction, transactionId) {
+    return this.update(transaction, {
+      where: {
+        id: transactionId
+      }
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
+  }
+
+  Transactions.getUserTransactions = function getUserTransactionsInModel (userId) {
     return this.findAll({
       attributes: ['id', 'title', 'amount', 'created', 'updated'],
       where: {
         user_id: userId
       }
+    })
+    .catch(function (err) {
+      console.log(err)
     })
   }
 
