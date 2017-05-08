@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = function transactionsModel (sequelize, DataTypes) {
   var Transactions = sequelize.define('transactions', {
     id: {
@@ -18,8 +20,17 @@ module.exports = function transactionsModel (sequelize, DataTypes) {
 
   Transactions.createNewTransaction = function createNewTransaction (transaction) {
     return this.create(transaction)
-    .then( function createTransactionModelResponse (transaction) {
+    .then(function createTransactionModelResponse (transaction) {
       return transaction.dataValues
+    })
+  }
+
+  Transactions.getUserTransactions = function getUserTransactions (userId) {
+    return this.findAll({
+      attributes: ['id', 'title', 'amount', 'created', 'updated'],
+      where: {
+        user_id: userId
+      }
     })
   }
 

@@ -1,3 +1,5 @@
+'use strict'
+
 // Define Server settings
 const restify = require('restify')
 const server = restify.createServer({
@@ -13,8 +15,12 @@ global.db.sequelize.sync({force: false})
 const transactionCtrl = require('./controllers/transaction')
 
 // Transaction Routes
-server.post('/transactions', (req, res, next) => {
+server.post('/transactions', function createTransactionRequest (req, res, next) {
   transactionCtrl.createTransaction(req, res, next)
+})
+
+server.get('/transactions/:user_id', function getTransactionsRequest (req, res, next) {
+  transactionCtrl.getUserTransactions(req, res, next)
 })
 
 // Start the server!
