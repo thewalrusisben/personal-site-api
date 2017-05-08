@@ -11,7 +11,11 @@ module.exports = function transactionsModel (sequelize, DataTypes) {
     amount: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER,
     created: DataTypes.DATE,
-    updated: DataTypes.DATE
+    updated: DataTypes.DATE,
+    active: {
+      type: DataTypes.INTEGER,
+      defaultValue: 1
+    }
   }, {
     timestamps: true,
     createdAt: 'created',

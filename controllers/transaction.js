@@ -32,6 +32,20 @@ exports.updateTransaction = function (req, res, next) {
   })
 }
 
+exports.deleteTransaction = function (req, res, next) {
+  let transactionData = {
+    active: 0
+  }
+  let transactionId = req.params.transaction_id
+  global.db.transactions.updateTransaction(transactionData, transactionId)
+  .then(function updatedTransactionResponse (response) {
+    return res.send(response)
+  })
+  .catch(function (err) {
+    console.log(err)
+  })
+}
+
 exports.getUserTransactions = function (req, res, next) {
   let userId = req.params.user_id
   global.db.transactions.getUserTransactions(userId)

@@ -23,6 +23,10 @@ server.put('/transactions/:transaction_id', function updateTransactionRequest (r
   transactionCtrl.updateTransaction(req, res, next)
 })
 
+server.del('transactions/:transaction_id', function deleteTransactionRequest (req, res, next) {
+  transactionCtrl.deleteTransaction(req, res, next)
+})
+
 server.get('/transactions/:user_id', function getTransactionsRequest (req, res, next) {
   transactionCtrl.getUserTransactions(req, res, next)
 })
