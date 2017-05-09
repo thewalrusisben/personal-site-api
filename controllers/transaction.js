@@ -50,6 +50,6 @@ exports.getUserTransactions = function (req, res, next) {
   let userId = req.params.user_id
   global.db.transactions.getUserTransactions(userId)
   .then(function getUserTransactionsResponse (response) {
-    return res.send(response)
+    return res.send(200, response)
   })
 }

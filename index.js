@@ -2,10 +2,13 @@
 
 // Define Server settings
 const restify = require('restify')
+const oauthserver = require('oauth2-server')
 const server = restify.createServer({
   name: 'planner-api'
 })
 server.use(restify.bodyParser()) // Body parser, so requests can use post bodies!
+
+
 
 // Sequelize global property imports & definition
 global.db = require('./models')
