@@ -1,10 +1,10 @@
 {
-  "name": "planner-api",
+  "name": "personal-api",
   "version": "0.0.1",
-  "description": "API for a personal budget planner application.",
+  "description": "API for a personal projects & apps.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "standard && nodemon index.js",
     "test": "standard"
   },
   "author": "Ben Sweeney",
@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "mysql": "^2.13.0",
-    "oauth": "^0.9.15",
     "restify": "^4.3.0",
     "sequelize": "^3.30.4"
   }

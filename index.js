@@ -3,7 +3,7 @@
 // Define Server settings
 const restify = require('restify')
 const server = restify.createServer({
-  name: 'planner-api'
+  name: 'bs-personal-projects-api'
 })
 server.use(restify.bodyParser()) // Body parser, so requests can use post bodies!
 
@@ -12,23 +12,19 @@ global.db = require('./models')
 global.db.sequelize.sync({force: false})
 
 // Controller Imports
-const transactionCtrl = require('./controllers/transaction')
+const postsCtrl = require('./controllers/posts')
+const applicationsCtrl = require('./controllers/applications')
 
-// Transaction Routes
-server.post('/transactions', function createTransactionRequest (req, res, next) {
-  transactionCtrl.createTransaction(req, res, next)
+server.get('/post/:id', function getLatestPostRequest (req, res, next) {
+  req.params.id ? postsCtrl.getPostById(req, res, next) : postsCtrl.getLatestPost(req, res, next)
 })
 
-server.put('/transactions/:transaction_id', function updateTransactionRequest (req, res, next) {
-  transactionCtrl.updateTransaction(req, res, next)
+server.get('/posts/:page', function getPaginatedPostsRequest (req, res, next) {
+  postsCtrl.getPaginatedPosts(req, res, next)
 })
 
-server.del('transactions/:transaction_id', function deleteTransactionRequest (req, res, next) {
-  transactionCtrl.deleteTransaction(req, res, next)
-})
-
-server.get('/transactions/:user_id', function getTransactionsRequest (req, res, next) {
-  transactionCtrl.getUserTransactions(req, res, next)
+server.get('/applications', function getAllApplicationsRequest (req, res, next) {
+  applicationsCtrl.getAllApplications(req, res, next)
 })
 
 // Start the server!
