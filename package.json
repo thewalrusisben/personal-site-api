@@ -4,7 +4,7 @@
   "description": "API for a personal projects & apps.",
   "main": "index.js",
   "scripts": {
-    "start": "standard && nodemon index.js",
+    "start": "node index.js",
     "test": "standard"
   },
   "author": "Ben Sweeney",
