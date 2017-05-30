@@ -4,7 +4,7 @@ module.exports = (function db () {
   var sequelize = new Sequelize(process.env.DB, process.env.DB_USER, process.env.DB_PW, {
     host: process.env.DB_HOST,
     dialect: 'mysql',
-    logging: false,
+    logging: console.log,
     pool: {
       max: 5,
       min: 0,
@@ -13,7 +13,8 @@ module.exports = (function db () {
   })
 
   var db = {
-    transactions: sequelize.import('./transactionsModel'),
+    applications: sequelize.import('./applicationsModel'),
+    posts: sequelize.import('./postsModel'),
     sequelize: sequelize,
     Sequelize: Sequelize
   }

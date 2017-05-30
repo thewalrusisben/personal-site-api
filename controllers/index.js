@@ -1,1 +1,2 @@
-exports.transaction = require('./transaction')
+exports.posts = require('./posts')
+exports.applications = require('./applications')
