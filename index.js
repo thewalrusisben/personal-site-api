@@ -28,6 +28,6 @@ server.get('/applications', function getAllApplicationsRequest (req, res, next) 
 })
 
 // Start the server!
-server.listen(8080, () => {
-  console.log('listening at http://localhost:8080')
+server.listen(8081, () => {
+  console.log('listening at http://localhost:8081')
 })
