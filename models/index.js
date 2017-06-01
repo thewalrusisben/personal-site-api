@@ -4,7 +4,7 @@ module.exports = (function db () {
   var sequelize = new Sequelize(process.env.DB, process.env.DB_USER, process.env.DB_PW, {
     host: process.env.DB_HOST,
     dialect: 'mysql',
-    logging: console.log,
+    logging: false,
     pool: {
       max: 5,
       min: 0,
