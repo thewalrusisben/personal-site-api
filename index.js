@@ -28,6 +28,6 @@ server.get('/applications', function getAllApplicationsRequest (req, res, next) 
 })
 
 // Start the server!
-server.listen(8081, () => {
+server.listen(process.env.PORT || 8081, () => {
   console.log('listening at http://localhost:8081')
 })
