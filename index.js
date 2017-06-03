@@ -6,6 +6,9 @@ const server = restify.createServer({
   name: 'bs-personal-projects-api'
 })
 server.use(restify.bodyParser()) // Body parser, so requests can use post bodies!
+server.use(restify.CORS({
+  origins: ['http://localhost:3000', 'http://www.bensweeney.me']
+}))
 
 // Sequelize global property imports & definition
 global.db = require('./models')
