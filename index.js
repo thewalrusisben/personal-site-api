@@ -7,7 +7,7 @@ const server = restify.createServer({
 })
 server.use(restify.bodyParser()) // Body parser, so requests can use post bodies!
 server.use(restify.CORS({
-  origins: ['http://localhost:3000', 'http://www.bensweeney.me']
+  origins: ['*']
 }))
 
 // Sequelize global property imports & definition
