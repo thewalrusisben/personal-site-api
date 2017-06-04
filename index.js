@@ -31,6 +31,10 @@ server.get('/applications', function getAllApplicationsRequest (req, res, next) 
   applicationsCtrl.getAllApplications(req, res, next)
 })
 
+server.get('/pingpong', function playPingPong (req, res, next) {
+  return res.send(200, {'message': 'pong'})
+})
+
 // Start the server!
 server.listen(process.env.PORT || 8081, () => {
   console.log('listening at http://localhost:8081')
