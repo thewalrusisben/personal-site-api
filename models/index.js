@@ -15,6 +15,7 @@ module.exports = (function db () {
   var db = {
     applications: sequelize.import('./applicationsModel'),
     posts: sequelize.import('./postsModel'),
+    workoutsUsers: sequelize.import('./workoutsUsersModel'),
     sequelize: sequelize,
     Sequelize: Sequelize
   }

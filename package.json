@@ -5,16 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "standard && nodemon index.js",
     "test": "standard"
   },
   "author": "Ben Sweeney",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^3.3.0",
+    "nodemon": "^1.12.1",
     "standard": "^10.0.2"
   },
   "dependencies": {
+    "dotenv-safe": "^4.0.4",
     "mysql": "^2.13.0",
+    "redis": "^2.7.1",
     "restify": "^4.3.0",
     "sequelize": "^3.30.4"
   }

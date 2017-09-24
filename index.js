@@ -1,5 +1,8 @@
 'use strict'
 
+// Load Environment Variables
+require('dotenv-safe').load()
+
 // Define Server settings
 const restify = require('restify')
 const server = restify.createServer({
@@ -16,22 +19,25 @@ global.db = require('./models')
 global.db.sequelize.sync({force: false})
 
 // Controller Imports
-const postsCtrl = require('./controllers/posts')
-const applicationsCtrl = require('./controllers/applications')
+const { posts, applications, workouts } = require('./controllers')
 
-server.get('/post/:id', function getLatestPostRequest (req, res, next) {
+server.get('/post/:id', (req, res, next) => {
   req.params.id ? postsCtrl.getPostById(req, res, next) : postsCtrl.getLatestPost(req, res, next)
 })
 
-server.get('/posts/:page', function getPaginatedPostsRequest (req, res, next) {
-  postsCtrl.getPaginatedPosts(req, res, next)
+server.get('/posts/:page', (req, res, next) => {
+  posts.getPaginatedPosts(req, res, next)
 })
 
-server.get('/applications', function getAllApplicationsRequest (req, res, next) {
-  applicationsCtrl.getAllApplications(req, res, next)
+server.get('/applications', (req, res, next) => {
+  applications.getAllApplications(req, res, next)
+})
+
+server.post('/workouts/user', (req, res, next) => {
+  workouts.findOrCreateNewWorkoutsUser(req, res, next)
 })
 
 // Start the server!
 server.listen(process.env.PORT || 8081, () => {
-  console.log('listening at http://localhost:8081')
+  console.log(`listening at http://localhost:${process.env.PORT}`)
 })
