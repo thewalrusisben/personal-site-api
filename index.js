@@ -37,6 +37,14 @@ server.post('/workouts/user', (req, res, next) => {
   workouts.findOrCreateNewWorkoutsUser(req, res, next)
 })
 
+server.get('workouts/workout/user/:userId', (req, res, next) => {
+  workouts.findWorkoutsByUser(req, res, next)
+})
+
+server.post('/workouts/workout/new', (req, res, next) => {
+  workouts.createOrModifyWorkout(req, res, next)
+})
+
 // Start the server!
 server.listen(process.env.PORT || 8081, () => {
   console.log(`listening at http://localhost:${process.env.PORT}`)
